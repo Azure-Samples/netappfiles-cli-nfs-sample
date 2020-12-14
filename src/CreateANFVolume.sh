@@ -1,7 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-#Mandatory variables for ANF resources
+# Mandatory variables for ANF resources
+# Change variables according to your environment 
 SUBSCRIPTION_ID=""
 LOCATION="WestUS"
 RESOURCEGROUP_NAME="My-rg"
@@ -9,10 +10,10 @@ VNET_NAME="netapp-vnet"
 SUBNET_NAME="netapp-subnet"
 NETAPP_ACCOUNT_NAME="netapptestaccount"
 NETAPP_POOL_NAME="netapptestpool"
-NETAPP_POOL_SIZE=4
+NETAPP_POOL_SIZE_TIB=4
 NETAPP_VOLUME_NAME="netapptestvolume"
 SERVICE_LEVEL="Standard"
-NETAPP_VOLUME_SIZE=100
+NETAPP_VOLUME_SIZE_GIB=100
 PROTOCOL_TYPE="NFSv4.1"
 SHOULD_CLEANUP="false"
 
@@ -70,7 +71,7 @@ create_or_update_netapp_pool()
         --account-name $NETAPP_ACCOUNT_NAME \
         --name $NETAPP_POOL_NAME \
         --location $LOCATION \
-        --size $NETAPP_POOL_SIZE \
+        --size $NETAPP_POOL_SIZE_TIB \
         --service-level $SERVICE_LEVEL | jq ".id")
 
     if [[ "$__resultvar" ]]; then
@@ -94,7 +95,7 @@ create_or_update_netapp_volume()
         --name $NETAPP_VOLUME_NAME \
         --location $LOCATION \
         --service-level $SERVICE_LEVEL \
-        --usage-threshold $NETAPP_VOLUME_SIZE \
+        --usage-threshold $NETAPP_VOLUME_SIZE_GIB \
         --vnet $VNET_NAME \
         --subnet $SUBNET_NAME \
         --protocol-types $PROTOCOL_TYPE | jq ".id")
@@ -147,7 +148,7 @@ display_message "setting up the target subscription"
 az account set --subscription $SUBSCRIPTION_ID
 
 display_message "Creating Azure NetApp Files Account ..."
-{
+{    
     NEW_ACCOUNT_ID="";create_or_update_netapp_account NEW_ACCOUNT_ID
     display_message "Azure NetApp Files Account was created successfully: $NEW_ACCOUNT_ID"
 } || {
@@ -159,7 +160,7 @@ display_message "Creating Azure NetApp Files Pool ..."
 {
     NEW_POOL_ID="";create_or_update_netapp_pool NEW_POOL_ID
     display_message "Azure NetApp Files pool was created successfully: $NEW_POOL_ID"
-}|| {
+} || {
     display_message "Failed to create Azure NetApp Files pool"
     exit 1
 }
@@ -168,7 +169,7 @@ display_message "Creating Azure NetApp Files Volume..."
 {
     NEW_VOLUME_ID="";create_or_update_netapp_volume NEW_VOLUME_ID
     display_message "Azure NetApp Files volume was created successfully: $NEW_VOLUME_ID"
-}|| {
+} || {
     display_message "Failed to create Azure NetApp Files volume"
     exit 1
 }
@@ -183,7 +184,7 @@ if [[ "$SHOULD_CLEANUP" == true ]]; then
     {
         delete_netapp_volume
         display_message "Azure NetApp Files volume was deleted successfully"
-    }|| {
+    } || {
         display_message "Failed to delete Azure NetApp Files volume"
         exit 1
     }
@@ -193,7 +194,7 @@ if [[ "$SHOULD_CLEANUP" == true ]]; then
     {
         delete_netapp_pool
         display_message "Azure NetApp Files pool was deleted successfully"
-    }|| {
+    } || {
         display_message "Failed to delete Azure NetApp Files pool"
         exit 1
     }

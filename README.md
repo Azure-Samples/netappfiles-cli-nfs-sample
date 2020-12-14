@@ -5,19 +5,19 @@ languages:
 products:
 - azure
 - azure-netapp-files
-description: "This project demonstrates how to use CLI with NetApp Files SDK for Microsoft.NetApp resource provider to deploy NFSv3 or NFSv4.1 Volume."
+description: "This project demonstrates how to use Azure CLI commands for Azure NetAppFiles to deploy NFSv3 or NFSv4.1 Volume."
 ---
 
-# Azure NetAppFiles SDK NFSv3/NFS4.1 Sample CLI
+# Azure CLI NetAppFiles module NFSv3/NFS4.1 Sample
 
-This project demonstrates how to deploy NFSv3/NFSv4.1 protocol type volume using CLI and Azure NetApp Files SDK.
+This project demonstrates how to deploy NFSv3/NFSv4.1 protocol type volume using Azure CLI NetAppFiles module.
 
 In this sample application we perform the following operations:
 
 * Creation
-  * ANF Account
+  * Azure NetAppFiles Account
   *	Capacity pool 
-  * Primary NFS v4.1 Volume 
+  * NFS v4.1 Volume 
  
 * Deletion, the clean up process takes place (not enabled by default, please set the parameter SHOULD_CLEANUP to true if you want the clean up code to take a place),deleting all resources in the reverse order following the hierarchy otherwise we can't remove resources that have nested resources still live.
 
@@ -30,8 +30,9 @@ If you don't already have a Microsoft Azure subscription, you can get a FREE tri
 1. Subscription needs to be enabled for Azure NetApp Files. For more information, please refer to [this](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register#waitlist) document.
 1. Resource Group created
 1. Virtual Network with a delegated subnet to Microsoft.Netapp/volumes resource. For more information, please refer to [Guidelines for Azure NetApp Files network planning](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-network-topologies)
-1. Windows or Ubuntu terminal to run the script.
-1. Make sure you have jq command-line tool installed by using a package manager like apt and install it with a single command, please refer to [this](https://devdojo.com/bobbyiliev/how-to-work-with-json-in-bash-using-jq#installation)
+1. Make sure [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) is installed.
+1. Windows with WSL enabled (Windows Subsystem for Linux) or Linux to run the script. This was developed/tested on Ubuntu 18.04 LTS (bash version 4.4.20).
+1. Make sure [jq](https://stedolan.github.io/jq/) package is installed before executing this script.
 	
 	
 # How the project is structured
@@ -46,12 +47,12 @@ The following table describes all files within this solution:
 
 1. Clone it locally
     ```powershell
-    git clone https://github.com/Azure-Samples/netappfiles-cli-nfs-sdk-sample.git
+    git clone https://github.com/Azure-Samples/netappfiles-cli-nfs-sample.git
     ```
 	
-1. Open the terminal and execute the following Run the script
+1. Open a bash session and execute the following Run the script
 
-	 * Change folder to **netappfiles-cli-nfs-sdk-sample\src\**
+	 * Change folder to **netappfiles-cli-nfs-sample\src\**
 	 * Open CreateANFVolume.sh and edit all the parameters
 	 * Save and close
 	 * Run the following command
