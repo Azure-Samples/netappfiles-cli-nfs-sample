@@ -1,13 +1,13 @@
-## [project-title] Changelog
+## Azure NetAppFiles SDK NFSv3/NFSv4.1 Sample CLI
 
-<a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+[1.0.0 (2020-12-10)](#1.0.0 (2020-12-10))
+# 1.0.0 (2020-12-10)
 
 *Features*
-* ...
+* Initial Commit
 
 *Bug Fixes*
-* ...
+* N/A
 
 *Breaking Changes*
-* ...
+* N/A
