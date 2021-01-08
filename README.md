@@ -5,7 +5,7 @@ languages:
 products:
 - azure
 - azure-netapp-files
-description: "This project demonstrates how to use Azure CLI commands for Azure NetAppFiles to deploy NFSv3 or NFSv4.1 Volume."
+description: "This project demonstrates how to use Azure CLI commands for Azure NetAppFiles to deploy NFSv3 or NFSv4.1 Volume." 
 ---
 
 # Azure CLI NetAppFiles module NFSv3/NFS4.1 Sample
@@ -28,7 +28,7 @@ If you don't already have a Microsoft Azure subscription, you can get a FREE tri
 
 1. Azure Subscription
 1. Subscription needs to be enabled for Azure NetApp Files. For more information, please refer to [this](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register#waitlist) document.
-1. Resource Group created
+1. Resource Group created.
 1. Virtual Network with a delegated subnet to Microsoft.Netapp/volumes resource. For more information, please refer to [Guidelines for Azure NetApp Files network planning](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-network-topologies)
 1. Make sure [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) is installed.
 1. Windows with WSL enabled (Windows Subsystem for Linux) or Linux to run the script. This was developed/tested on Ubuntu 18.04 LTS (bash version 4.4.20).
@@ -61,7 +61,7 @@ The following table describes all files within this solution:
 	 ```
 
 	Sample output
-	![e2e execution](./media/e2e-execution.PNG)
+	![e2e execution](./media/e2e-execution.PNG) 
 
 	
 # References
