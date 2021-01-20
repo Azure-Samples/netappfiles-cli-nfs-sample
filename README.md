@@ -16,11 +16,10 @@ In this sample application we perform the following operations:
 
 * Creation
   * Azure NetAppFiles Account
-  *	Capacity pool 
+  * Capacity pool 
   * NFS v4.1 Volume 
  
 * Deletion, the clean up process takes place (not enabled by default, please set the parameter SHOULD_CLEANUP to true if you want the clean up code to take a place),deleting all resources in the reverse order following the hierarchy otherwise we can't remove resources that have nested resources still live.
-
 
 If you don't already have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
 
