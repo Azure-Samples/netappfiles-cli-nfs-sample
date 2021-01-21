@@ -1,7 +1,7 @@
 ---
 page_type: sample
 languages:
-- cli
+- bash
 products:
 - azure
 - azure-netapp-files
