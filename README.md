@@ -2,6 +2,7 @@
 page_type: sample
 languages:
 - bash
+- azurecli
 products:
 - azure
 - azure-netapp-files
